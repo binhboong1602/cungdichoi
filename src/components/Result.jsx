@@ -1,7 +1,8 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { db } from "../firebase.js";
-import { useHistory, useState, useEffect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function Result() {
   const history = useHistory();
