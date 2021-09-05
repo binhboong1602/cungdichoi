@@ -2,6 +2,14 @@ import React, { useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext';
 import { useHistory } from 'react-router-dom';
+import { SessionList } from '../utility/SessionList';
+import Table from 'react-bootstrap/Table';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 
 
 export default function Dashboard() {
@@ -23,38 +31,31 @@ export default function Dashboard() {
         history.push('/session/create/1')
     }
 
-    const testData = [{
-        id: 1,
-        title: 'Ohoho'
-    },
-    {
-        id: 2,
-        title: 'Ohaha'
-    },
-    {
-        id: 3,
-        title: 'Ohihi'
-    }]
 
-    const boderdStyle = { border: '1px solid black' }
+
+
 
     return (<div className="dash-board">
         <h1>Information about joined sessions</h1>
-        <table className='table-session'>
-            <tr>
-                <th style={boderdStyle}>ID</th>
-                <th style={boderdStyle}>Title</th>
-                <th style={boderdStyle}>Detail</th>
-            </tr>
-            {testData.map((item) => {
-                return (
-                    <tr style={boderdStyle}>
-                        <td style={boderdStyle}>{item.id}</td>
-                        <td style={boderdStyle}>{item.title}</td>
-                        <td style={boderdStyle}>Detail</td>
-                    </tr>)
-            })}
-        </table>
+        <Table striped bordered hover>
+            <thead>
+                <tr>
+                    <th>Session ID</th>
+                    <th>Session Title</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                {SessionList.map((session) => {
+                    return (
+                        <tr>
+                            <td>{session.id}</td>
+                            <td>{session.title}</td>
+                            <td><Link to={`/sessions/detail/${session.id}`}> Detail </Link></td>
+                        </tr>)
+                })}
+            </tbody>
+        </Table>
         <Button variant='danger' onClick={handleLogout} style={{ marginRight: '20px' }}>Log Out</Button>
         <Button variant="primary" onClick={handleClick}>Create new group</Button>
     </div>

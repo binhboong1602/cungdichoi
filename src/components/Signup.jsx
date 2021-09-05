@@ -34,8 +34,9 @@ export default function Signup() {
     }
 
 
-    return (<>
-        <Card>
+    return (<div className='signup-container'>
+        <h1>Sign up for free here with your email</h1>
+        <Card className='signup'>
             <Card.Body>
                 <h2 className="text-center mb-4">Sign Up</h2>
                 {error && <Alert variant='danger'>{error}</Alert>}
@@ -55,10 +56,10 @@ export default function Signup() {
                     <Button type="submit" className="w-100" disabled={loading}>Sign Up</Button>
                 </Form>
             </Card.Body>
+            <div className="w-100 text-center mt-2">
+                Already have an account? <Link to='/login'>Log In</Link>
+            </div>
         </Card>
-        <div className="w-100 text-center mt-2">
-            Already have an account? <Link to='/login'>Log In</Link>
-        </div>
-    </>
+    </div>
     )
 }
