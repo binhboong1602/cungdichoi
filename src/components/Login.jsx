@@ -49,6 +49,11 @@ export default function Login() {
                         <Form.Control type="password" ref={passwordRef} required />
                     </Form.Group>
                     <Button type="submit" className="w-100" disabled={loading}>Log In</Button>
+                    <div className="w-100 text-center mt-2">
+                        <Link to="/forgot-password" style={{ textDecoration: "none" }}>
+                            Forgot Password?
+                        </Link>
+                    </div>
                 </Form>
             </Card.Body>
             <div className="w-100 text-center mt-2">
